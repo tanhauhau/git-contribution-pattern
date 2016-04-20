@@ -19,6 +19,8 @@ function massiveCommit {
         echo $(python -c 'import time; print time.time()') > time.txt
         git commit -am "new time"
     done
+
+    git push origin master
 }
 
 # get today
