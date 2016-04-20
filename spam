@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Commit a lot!!
+function massiveCommit {
+    #create the folder
+    mkdir -p time
+    cd time
+
+    #init git
+    git init .
+
+    #create file
+    touch time.txt
+    git add .
+
+    #spam git commits
+    for i in `seq 1 1000`;
+    do
+        echo $(python -c 'import time; print time.time()') > time.txt
+        git commit -am "new time"
+    done
+}
+
+# get today
+TODAY=$(date +%D);
+# days to do a lot of commit
+DATES=(%s)
+
+# compare whether today is the day to do a lot of commits
+for i in "${DATES[@]}"
+do
+    if [ "$TODAY" == "$i" ]
+    then
+        massiveCommit
+        exit
+    fi
+done

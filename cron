@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#add to cron for daily execution of the task
+(crontab -l ; echo "@daily ./spam") | crontab
